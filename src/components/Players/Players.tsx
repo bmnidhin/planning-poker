@@ -10,17 +10,21 @@ interface PlayersProps {
 }
 export const Players: React.FC<PlayersProps> = ({ game, players, currentPlayerId }) => {
   return (
-    <div className='animate-grow flex items-center justify-center w-full'>
-      <div className='flex flex-wrap justify-center gap-4 w-full max-w-6xl px-4'>
-        {players.map((player: Player) => (
-          <PlayerCard
-            key={player.id}
-            game={game}
-            player={player}
-            currentPlayerId={currentPlayerId}
-          />
-        ))}
+    <div className='animate-grow flex items-center justify-center w-full h-full overflow-hidden'>
+      <div className='w-full max-w-5xl px-6 h-full overflow-y-auto'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 py-12'>
+          {players.map((player: Player) => (
+            <PlayerCard
+              key={player.id}
+              game={game}
+              player={player}
+              currentPlayerId={currentPlayerId}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
 };
+
+// Made with Bob

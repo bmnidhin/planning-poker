@@ -10,7 +10,7 @@ import JoinPage from './pages/JoinPage/JoinPage';
 
 function App() {
   return (
-    <div className='bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen'>
+    <div className='bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen overflow-hidden'>
       <Suspense
         fallback={
           <div className='text-center items-center justify-center flex'>
