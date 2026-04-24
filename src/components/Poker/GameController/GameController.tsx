@@ -80,9 +80,9 @@ export const GameController: React.FC<GameControllerProps> = ({
         <AverageComponent game={game} players={players} />
       </div>
 
-      {/* Reveal and Restart - Top Middle Buttons (Non-floating) */}
+      {/* Reveal and Restart - Top of Screen */}
       {isMod && (
-        <div className='absolute top-0 left-1/2 -translate-x-1/2 z-40 flex gap-4 mb-4'>
+        <div className='fixed top-4 left-1/2 -translate-x-1/2 z-50 flex gap-4'>
           <button
             onClick={() => finishGame(game.id)}
             data-testid='reveal-button'

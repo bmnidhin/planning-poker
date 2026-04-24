@@ -34,7 +34,7 @@ export const CardPicker: React.FC<CardPickerProps> = ({ game, players, currentPl
           ? 'Click on the card to vote'
           : 'Session not ready for Voting! Wait for moderator to start'}
       </div>
-      <div className='flex flex-wrap justify-center gap-6 py-4 px-2 overflow-x-auto'>
+      <div className='flex flex-wrap justify-center gap-4 py-4 px-2 overflow-x-auto'>
         {cards.map((card: CardConfig, index) => {
           const isSelected = players.find((p) => p.id === currentPlayerId)?.value === card.value;
           return (
@@ -43,19 +43,15 @@ export const CardPicker: React.FC<CardPickerProps> = ({ game, players, currentPl
               id={`card-${card.displayValue}`}
               className={`
               cursor-pointer select-none transition-all duration-300
-              rounded shadow-md border
-              border-gray-300
+              rounded-2xl shadow-lg
               flex flex-col items-center justify-center
-              bg-white
-              text-gray-800
-              hover:scale-115
-              w-15 h-23
-              md:w-20 md:h-30
-              sm:w-15 sm:h-23
+              text-gray-800 dark:text-gray-200
+              w-20 h-28
+              md:w-24 md:h-32
               ${
                 isSelected
-                  ? 'border-dashed border-2 border-gray-800 z-10 shadow-lg scale-115'
-                  : 'shadow-md scale-100'
+                  ? 'border-4 border-blue-600 dark:border-blue-400 z-10 shadow-xl scale-110'
+                  : 'border-4 border-blue-400 dark:border-blue-500 shadow-md scale-100 hover:scale-105'
               }
               ${
                 game.gameStatus === Status.Finished
@@ -68,27 +64,19 @@ export const CardPicker: React.FC<CardPickerProps> = ({ game, players, currentPl
               }}
               onClick={() => playPlayer(game.id, currentPlayerId, card)}
             >
-              <div className='flex flex-col justify-between h-full w-full p-1'>
+              <div className='flex items-center justify-center h-full w-full'>
                 {card.value >= 0 && (
-                  <>
-                    <span className='text-xs text-gray-800 flex justify-start'>
-                      {card.displayValue}
-                    </span>
-                    <span className={`${card.displayValue.length < 2 ? 'text-4xl' : 'text-3xl'}`}>
-                      {card.displayValue}
-                    </span>
-                    <span className='flex justify-end w-full text-xs text-gray-800'>
-                      {card.displayValue}
-                    </span>
-                  </>
+                  <span className={`font-bold ${card.displayValue.length < 2 ? 'text-5xl' : 'text-4xl'}`}>
+                    {card.displayValue}
+                  </span>
                 )}
                 {card.value === -1 && (
-                  <span className='flex flex-col justify-center h-full text-4xl'>
+                  <span className='text-5xl'>
                     {randomEmoji}
                   </span>
                 )}
                 {card.value === -2 && (
-                  <span className='flex flex-col justify-center h-full text-4xl'>❓</span>
+                  <span className='text-5xl'>❓</span>
                 )}
               </div>
             </div>

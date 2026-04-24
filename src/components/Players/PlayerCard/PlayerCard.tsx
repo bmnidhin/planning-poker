@@ -20,31 +20,31 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({ game, player, currentPla
 
   return (
     <div
-      className='rounded shadow-lg w-25 bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-600 border mb-2 m-3'
+      className='rounded-2xl shadow-2xl w-40 h-52 md:w-48 md:h-64 border-4 border-blue-400 dark:border-blue-500 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105'
       style={{
         backgroundColor: getCardColor(game, player.value),
       }}
     >
-      <div className='text-center -mt-5 mx-auto w-[95%] bg-white dark:bg-gray-900 border-2  border-gray-400 dark:border-gray-700 rounded-2xl flex items-center justify-around px-3 py-1'>
-        <div className='text-center font-semibold text-sm truncate' title={player.name}>
+      <div className='flex-1 flex items-center justify-center text-gray-800 dark:text-gray-200 py-6'>
+        <span className={`font-bold ${getCardValue(player, game)?.length < 2 ? 'text-6xl md:text-7xl' : 'text-5xl md:text-6xl'}`}>
+          {getCardValue(player, game)}
+        </span>
+      </div>
+      <div className='bg-white dark:bg-gray-900 border-t-2 border-blue-400 dark:border-blue-500 px-4 py-3 flex items-center justify-between'>
+        <div className='text-center font-semibold text-base md:text-lg truncate flex-1' title={player.name}>
           {player.name}
         </div>
         {isModerator(game.createdById, currentPlayerId, game.isAllowMembersToManageSession) &&
           player.id !== currentPlayerId && (
             <button
               title='Remove'
-              className='cursor-pointer  p-0.5 mt-0.5 rounded hover:bg-red-100 transition'
+              className='cursor-pointer p-1 rounded hover:bg-red-100 dark:hover:bg-red-900 transition ml-2'
               onClick={() => removeUser(game.id, player.id)}
               data-testid='remove-button'
             >
-              <TrashSVG className='h-4 w-4 text-red-400' />
+              <TrashSVG className='h-5 w-5 text-red-400' />
             </button>
           )}
-      </div>
-      <div className='flex items-center justify-center text-gray-800 py-6 mb-3'>
-        <span className={`${getCardValue(player, game)?.length < 2 ? 'text-4xl' : 'text-3xl'}`}>
-          {getCardValue(player, game)}
-        </span>
       </div>
     </div>
   );
