@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import * as fb from '../repository/firebase';
 import { GameType } from '../types/game';
 import { Status } from '../types/status';

@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { isModerator } from './isModerator';
 
 describe('isModerator', () => {

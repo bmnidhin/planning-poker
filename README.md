@@ -75,11 +75,15 @@ Pre-req
 6. Run `yarn start` to start the app.
 7. Access the app at `http://localhost:3000`.
 
-## Creating docker container
+## Creating container with Podman
 
 pre-req
 
-- docker desktop
+- Podman 
+
+```
+podman machine start
+```
 
 1. Build the app using below command. Make sure `REACT_APP_USE_FIRESTORE_EMULATOR` env variable is set to true.
 
@@ -87,16 +91,16 @@ pre-req
    npm run build
    ```
 
-2. Build docker image
+2. Build container image
 
    ```bash
-   docker build -t planning-poker .
+   podman build -t appcon-neptune/scrum-poker . 
    ```
 
 3. Running the container
 
-   ```
-   docker run -it -p 8080:8080 -p 3000:3000  planning-poker
+   ```bash
+   podman run -it -p 8080:8080 -p 3000:3000  planning-poker
    ```
 
 4. Wait for both emulator and app to start

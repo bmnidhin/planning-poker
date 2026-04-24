@@ -1,7 +1,7 @@
 # Stage 2: Set up the Firebase Emulator and serve the app
 FROM node:20-alpine
 
-RUN apk add --no-cache openjdk17
+RUN apk add --no-cache openjdk21-jre
 
 # Install Firebase CLI
 RUN npm install -g firebase-tools serve
@@ -23,4 +23,4 @@ EXPOSE 4000
 EXPOSE 3000
 
 # Start both the React app and Firebase Emulator
-CMD ["sh", "-c", "firebase emulators:start --only firestore --project demo & VITE_USE_FIRESTORE_EMULATOR=true & npx serve -s build -l 3000"]
+CMD ["sh", "-c", "firebase emulators:start --only firestore --project poker-neptune --host 0.0.0.0 > /tmp/firebase-emulator.log 2>&1 & VITE_USE_FIRESTORE_EMULATOR=true npx serve -s build -l 3000"]

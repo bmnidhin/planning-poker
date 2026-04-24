@@ -7,7 +7,6 @@ import { GoogleAd } from '../../components/GoogleAd/GoogleAd';
 import { CreateGame } from '../../components/Poker/CreateGame/CreateGame';
 import { JoinGame } from '../../components/Poker/JoinGame/JoinGame';
 import { RecentGames } from '../../components/Poker/RecentGames/RecentGames';
-import { AboutPlanningPokerContent } from '../AboutPage/AboutPage';
 import SessionControllerImage from './../../images/Session.jpg';
 import LandingImage from './../../images/background.jpg';
 
@@ -21,9 +20,6 @@ export const HomePage = () => {
         <RecentGamesSection />
         <Divider />
         <UIDesignSection />
-        <GoogleAd />
-        <Divider />
-        <AboutSection />
         <GoogleAd />
       </div>
       <Footer />
@@ -138,11 +134,5 @@ const UIDesignSection = () => {
     </Section>
   );
 };
-
-const AboutSection = () => (
-  <div className='w-full max-w-7xl my-8'>
-    <AboutPlanningPokerContent />
-  </div>
-);
 
 export default HomePage;

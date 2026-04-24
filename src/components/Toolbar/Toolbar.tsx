@@ -5,10 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
 import { LanguageControl } from '../LanguageControl/LanguageControl';
-import { ExampleSVG } from '../SVGs/Example';
 import { GithubSVG } from '../SVGs/Github';
 import { GuideSVG } from '../SVGs/Guide';
-import { InfoSVG } from '../SVGs/Info';
 import { JoinSVG } from '../SVGs/Join';
 import { MenuSVG } from '../SVGs/Menu';
 import { PlusSVG } from '../SVGs/Plus';
@@ -49,19 +47,9 @@ export const Toolbar = () => {
 
   const menuItems = [
     {
-      icon: <InfoSVG />,
-      label: t('toolbar.menu.about'),
-      onClick: () => handleNavigation('/about-planning-poker'),
-    },
-    {
       icon: <GuideSVG />,
       label: t('toolbar.menu.guide'),
       onClick: () => handleNavigation('/guide'),
-    },
-    {
-      icon: <ExampleSVG />,
-      label: t('toolbar.menu.examples'),
-      onClick: () => handleNavigation('/examples'),
     },
     {
       icon: <PlusSVG />,
