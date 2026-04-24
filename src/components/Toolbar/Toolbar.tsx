@@ -1,12 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { GamesSVG } from '../SVGs/GamesSVG';
 
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useBreakpoint } from '../../hooks/useBreakpoint';
-import { LanguageControl } from '../LanguageControl/LanguageControl';
 import { GithubSVG } from '../SVGs/Github';
-import { GuideSVG } from '../SVGs/Guide';
 import { JoinSVG } from '../SVGs/Join';
 import { MenuSVG } from '../SVGs/Menu';
 import { PlusSVG } from '../SVGs/Plus';
@@ -17,7 +14,6 @@ export const title = 'Neptune Poker';
 export const Toolbar = () => {
   const history = useHistory();
   const screenSize = useBreakpoint();
-  const { t } = useTranslation();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -48,13 +44,13 @@ export const Toolbar = () => {
   const menuItems = [
     {
       icon: <PlusSVG />,
-      label: t('toolbar.menu.newSession'),
+      label: 'New session',
       onClick: () => handleNavigation('/'),
       testId: 'toolbar.menu.newSession',
     },
     {
       icon: <JoinSVG />,
-      label: t('toolbar.menu.joinSession'),
+      label: 'Join session',
       onClick: () => handleNavigation('/join'),
       testId: 'toolbar.menu.joinSession',
     },
@@ -80,7 +76,6 @@ export const Toolbar = () => {
         {screenSize === 'md' || screenSize === 'sm' || screenSize === 'xs' ? (
           <div className='flex relative' ref={dropdownRef}>
             <ThemeControl />
-            <LanguageControl />
             <button
               className='button-ghost flex items-center'
               onClick={toggleDropdown}
@@ -114,7 +109,6 @@ export const Toolbar = () => {
               />
             ))}
             <ThemeControl />
-            <LanguageControl />
           </>
         )}
       </div>

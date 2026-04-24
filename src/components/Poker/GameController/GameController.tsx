@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { AlertDialog } from '../../../components/AlertDialog/AlertDialog';
 import {
@@ -33,7 +32,6 @@ export const GameController: React.FC<GameControllerProps> = ({
   currentPlayerId,
 }) => {
   const history = useHistory();
-  const { t } = useTranslation();
   const [showCopiedMessage, setShowCopiedMessage] = useState(false);
 
   useEffect(() => {
@@ -125,32 +123,32 @@ export const GameController: React.FC<GameControllerProps> = ({
               <ControllerButton
                 onClick={() => finishGame(game.id)}
                 icon={<EyeSVG className='h-9 w-9 text-green-500' />}
-                label={t('GameController.reveal')}
+                label='Reveal'
                 className='hover:bg-green-200'
                 testId='reveal-button'
               />
               <ControllerButton
                 onClick={() => resetGame(game.id)}
                 icon={<RefreshSVG className='h-9 w-9 text-red-400' />}
-                label={t('GameController.restart')}
+                label='Restart'
                 className='hover:bg-red-200'
                 testId='restart-button'
               />
               <ControllerButton
                 icon={<TrashSVG className='h-9 w-9 text-red-500' />}
-                label={t('GameController.delete')}
+                label='Delete'
                 className='hover:bg-red-200'
                 testId='delete-button'
               >
                 <AlertDialog
                   id={game.id}
-                  message={t('GameController.areYouSureDelete')}
+                  message='Are you sure? This will delete this session and remove all players.'
                   onConfirm={() => handleRemoveGame(game.id)}
                   data-testid='delete-button-dialog'
                 >
                   <button
                     className='p-2 cursor-pointer rounded-full bg-white dark:bg-gray-900 hover:bg-red-200 transition'
-                    title={t('GameController.delete')}
+                    title='Delete'
                   >
                     <TrashSVG className='h-9 w-9 text-red-500' />
                   </button>
@@ -161,22 +159,22 @@ export const GameController: React.FC<GameControllerProps> = ({
           <ControllerButton
             onClick={leaveGame}
             icon={<ExitSVG className='h-9 w-9 text-orange-500 ' />}
-            label={t('GameController.exit')}
+            label='Exit'
             className='hover:bg-red-200'
             testId='exit-button'
           />
           <ControllerButton
             onClick={copyInviteLink}
             icon={<LinkSVG className='h-9 w-9 text-blue-500' />}
-            label={t('GameController.invite')}
+            label='Invite'
             className='hover:bg-blue-200'
             testId='invite-button'
             title='Copy invite link'
           />
           <div className='w-full text-xs mt-2'>
-            <label className='font-semibold'>{t('GameController.storyName')}:</label>
+            <label className='font-semibold'>Story Name:</label>
             <input
-              placeholder={t('GameController.enterStoryName')}
+              placeholder='Enter story name or number'
               className='w-full italic p-2 mt-2 border bg-white dark:bg-gray-900 border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-400'
               type='text'
               data-testid='story-name-input'
@@ -193,7 +191,7 @@ export const GameController: React.FC<GameControllerProps> = ({
             className='bg-green-100 border border-green-200  text-gray-800 opacity-85 px-4 py-3 text-xs rounded shadow'
             role='alert'
           >
-            <span className='block font-bold'>{t('GameController.inviteLinkCopied')}!</span>
+            <span className='block font-bold'>Invite Link copied to clipboard!</span>
           </div>
         </div>
       )}
@@ -246,12 +244,10 @@ interface AutoRevealProps {
 }
 
 export const AutoReveal: React.FC<AutoRevealProps> = ({ autoReveal, onAutoReveal }) => {
-  const { t } = useTranslation();
-
   return (
     <div className='flex flex-col items-center'>
       <label className='flex items-center cursor-pointer'>
-        <span className='mr-1 text-xs'>{t('GameController.autoReveal')}</span>
+        <span className='mr-1 text-xs'>Auto Reveal</span>
         <button
           type='button'
           role='switch'
@@ -294,7 +290,6 @@ const AverageComponent: React.FC<{ game: Game; players: Player[] }> = ({ game, p
     return null;
   }
 
-  const { t } = useTranslation();
   const gameAverage = getAverage(game, players);
   let average = game.gameStatus === Status.Finished && gameAverage ? gameAverage.toFixed(2) : EMPTY;
 
@@ -305,7 +300,7 @@ const AverageComponent: React.FC<{ game: Game; players: Player[] }> = ({ game, p
   return (
     <>
       <div className='mx-2 h-6 border-l border-gray-400 dark:border-gray-600' />
-      <span className='text-sm font-medium'>{t('GameController.average')}:</span>
+      <span className='text-sm font-medium'>Average:</span>
       <span className='px-2 py-1 ml-1 text-xs rounded-full bg-blue-100 dark:bg-blue-900 font-bold shadow-sm border border-gray-200 inline-flex items-center relative'>
         {average}
         {average !== EMPTY && average !== NOT_APPLICABLE && (

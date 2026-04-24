@@ -1,11 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { useRouteMatch } from 'react-router-dom';
 import { Divider } from '../../components/Divider/Divider';
 import { CreateGame } from '../../components/Poker/CreateGame/CreateGame';
 import { JoinGame } from '../../components/Poker/JoinGame/JoinGame';
 import { RecentGames } from '../../components/Poker/RecentGames/RecentGames';
 import SessionControllerImage from './../../images/Session.jpg';
-import LandingImage from './../../images/background.jpg';
 
 export const HomePage = () => {
   return (
@@ -50,7 +48,6 @@ const Column = ({ children, className = '', ...props }: ColumnProps) => (
 
 const HeroSection = () => {
   const isJoin = useRouteMatch('/join');
-  const { t } = useTranslation();
   return (
     <Section className='pt-8'>
       <Column className='flex flex-col items-center'>
@@ -61,7 +58,6 @@ const HeroSection = () => {
 };
 
 const RecentGamesSection = () => {
-  const { t } = useTranslation();
   return (
     <Section>
       <Column className='mb-8 lg:mb-0'>
@@ -72,10 +68,7 @@ const RecentGamesSection = () => {
       <Column>
         <div className='p-6 flex flex-col items-center justify-center'>
           <p className='text-base'>
-            {t(
-              'HomePage.recentSessions',
-              'Here is your recent Planning/Refinement sessions, click on the session name to join the session again.',
-            )}
+            Here is your recent Planning/Refinement sessions, click on the session name to join the session again.
           </p>
         </div>
       </Column>
@@ -84,19 +77,15 @@ const RecentGamesSection = () => {
 };
 
 const UIDesignSection = () => {
-  const { t } = useTranslation();
   return (
     <Section maxWidth='max-w-5xl'>
       <Column className='mb-8 lg:mb-0'>
         <div className='p-6 flex flex-col items-center justify-center'>
           <h2 className='text-xl font-semibold mb-2'>
-            {t('HomePage.uiDesignTitle', 'Intuitive UI Design')}
+            Intuitive UI Design
           </h2>
           <p className='text-base'>
-            {t(
-              'HomePage.uiDesignDesc',
-              "Beautiful design for voting the story points, showing team members voting status with emojis(👍 - Voting Done, 🤔 - Yet to Vote). Once the card values are revealed, the card color helps to understand if the team's voting is sync or not. Session Moderator has full control on revealing story points and restarting the session.",
-            )}
+            Beautiful design for voting the story points, showing team members voting status with emojis(👍 - Voting Done, 🤔 - Yet to Vote). Once the card values are revealed, the card color helps to understand if the team's voting is sync or not. Session Moderator has full control on revealing story points and restarting the session.
           </p>
         </div>
       </Column>
