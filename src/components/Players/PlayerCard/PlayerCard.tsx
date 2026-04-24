@@ -20,29 +20,31 @@ export const PlayerCard: React.FC<PlayerCardProps> = ({ game, player, currentPla
 
   return (
     <div
-      className='rounded-2xl shadow-2xl w-40 h-52 md:w-48 md:h-64 border-4 border-blue-400 dark:border-blue-500 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105'
-      style={{
-        backgroundColor: getCardColor(game, player.value),
-      }}
+      className='rounded-3xl shadow-xl w-48 h-60 md:w-56 md:h-72 border-[3px] border-blue-500 bg-white dark:bg-gray-800 flex flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105'
     >
-      <div className='flex-1 flex items-center justify-center text-gray-800 dark:text-gray-200 py-6'>
-        <span className={`font-bold ${getCardValue(player, game)?.length < 2 ? 'text-6xl md:text-7xl' : 'text-5xl md:text-6xl'}`}>
+      <div
+        className='flex-1 flex items-center justify-center py-8'
+        style={{
+          backgroundColor: getCardColor(game, player.value) || 'white',
+        }}
+      >
+        <span className={`font-bold ${getCardValue(player, game)?.length < 2 ? 'text-7xl md:text-8xl' : 'text-6xl md:text-7xl'}`}>
           {getCardValue(player, game)}
         </span>
       </div>
-      <div className='bg-white dark:bg-gray-900 border-t-2 border-blue-400 dark:border-blue-500 px-4 py-3 flex items-center justify-between'>
-        <div className='text-center font-semibold text-base md:text-lg truncate flex-1' title={player.name}>
+      <div className='bg-white dark:bg-gray-900 border-t-[3px] border-blue-500 px-4 py-4 flex items-center justify-between min-h-[80px]'>
+        <div className='text-left font-bold text-lg md:text-xl truncate flex-1 text-gray-900 dark:text-gray-100' title={player.name}>
           {player.name}
         </div>
         {isModerator(game.createdById, currentPlayerId, game.isAllowMembersToManageSession) &&
           player.id !== currentPlayerId && (
             <button
               title='Remove'
-              className='cursor-pointer p-1 rounded hover:bg-red-100 dark:hover:bg-red-900 transition ml-2'
+              className='cursor-pointer p-1.5 rounded-lg hover:bg-red-100 dark:hover:bg-red-900 transition ml-2 flex-shrink-0'
               onClick={() => removeUser(game.id, player.id)}
               data-testid='remove-button'
             >
-              <TrashSVG className='h-5 w-5 text-red-400' />
+              <TrashSVG className='h-5 w-5 text-red-500' />
             </button>
           )}
       </div>

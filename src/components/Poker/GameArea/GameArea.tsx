@@ -13,7 +13,7 @@ interface GameAreaProps {
 export const GameArea: React.FC<GameAreaProps> = ({ game, players, currentPlayerId }) => {
   return (
     <>
-      <div className='flex flex-col min-h-[60%] overflow-auto p-0.5 justify-center pb-64'>
+      <div className='flex flex-col min-h-screen items-center justify-center pb-48 pt-20'>
         <Players game={game} players={players} currentPlayerId={currentPlayerId} />
         <GameController game={game} players={players} currentPlayerId={currentPlayerId} />
       </div>
