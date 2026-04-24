@@ -14,11 +14,11 @@ export const GameArea: React.FC<GameAreaProps> = ({ game, players, currentPlayer
   return (
     <>
       <div className='flex flex-col h-screen pt-16 pb-36'>
-        <div className='flex-1 overflow-hidden'>
-          <Players game={game} players={players} currentPlayerId={currentPlayerId} />
-        </div>
-        <div className='flex-shrink-0'>
+                <div className='flex-shrink-0'>
           <GameController game={game} players={players} currentPlayerId={currentPlayerId} />
+        </div>
+        <div className='flex-1 overflow-hidden mt-12'>
+          <Players game={game} players={players} currentPlayerId={currentPlayerId} />
         </div>
       </div>
       <CardPicker game={game} players={players} currentPlayerId={currentPlayerId} />

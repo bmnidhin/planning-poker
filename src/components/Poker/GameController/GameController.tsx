@@ -81,7 +81,7 @@ export const GameController: React.FC<GameControllerProps> = ({
       </div>
 
       {/* Reveal and Restart - Top of Screen */}
-      <div className='fixed top-4 left-1/2 -translate-x-1/2 z-50 flex gap-4'>
+      <div className='fixed top-18 left-1/2 -translate-x-1/2 z-50 flex gap-4'>
         <button
           onClick={() => finishGame(game.id)}
           data-testid='reveal-button'
