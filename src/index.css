@@ -1,12 +1,13 @@
 @import "tailwindcss";
 @import './styles/button.css';
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,'Twemoji Country Flags', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont,'Twemoji Country Flags', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

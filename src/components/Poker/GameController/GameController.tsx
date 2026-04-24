@@ -328,3 +328,4 @@ export const getAverage = (game: Game, players: Player[]): number => {
   });
   return Math.round((values / numberOfPlayersPlayed) * 100) / 100;
 };
+
