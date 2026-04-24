@@ -2,25 +2,6 @@
 
 Free / Open source Scrum/Agile Neptune Poker Web App to estimate user stories for the Agile/Scrum teams. Create session and invite team members to estimate user stories efficiently. Intuitive UI/UX for voting the story points, showing team members voting status with emojis(👍 - Voting Done, 🤔 - Yet to Vote). Session Moderator has full control on revealing story points and restarting the session.
 
-<div align="center">
-  
-[![Build and Tests](https://github.com/hellomuthu23/planning-poker/actions/workflows/build-and-tests.yml/badge.svg)](https://github.com/hellomuthu23/planning-poker/actions/workflows/build-and-tests.yml)
-[![Deploy to Firebase](https://github.com/hellomuthu23/planning-poker/actions/workflows/deploy-to-firebase-on-master.yml/badge.svg)](https://github.com/hellomuthu23/planning-poker/actions/workflows/deploy-to-firebase-on-master.yml)
-
-</div>
-
-## Live Site
-
-- <https://planning-poker-agile.web.app/>
-
-## Home Page
-
-<img src="docs/HomePage.jpg"  />
-
-## Active Session
-
-<img src="docs/ActiveSession.jpg"  />
-
 ## Features
 
 1. Create new Session(Fibonacci, Short Fibonacci, TShirt size or Custom)
@@ -127,4 +108,4 @@ podman machine start
 1. Add Semantic Release to generate changelog and release notes
 2. Add missing unit tests for services
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/hellomuthu23)
+
