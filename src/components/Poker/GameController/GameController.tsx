@@ -81,26 +81,24 @@ export const GameController: React.FC<GameControllerProps> = ({
       </div>
 
       {/* Reveal and Restart - Top of Screen */}
-      {isMod && (
-        <div className='fixed top-4 left-1/2 -translate-x-1/2 z-50 flex gap-4'>
-          <button
-            onClick={() => finishGame(game.id)}
-            data-testid='reveal-button'
-            className='px-8 py-4 text-xl font-bold text-white bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-green-400 dark:border-green-700 flex items-center gap-3'
-          >
-            <EyeSVG className='h-7 w-7' />
-            Reveal
-          </button>
-          <button
-            onClick={() => resetGame(game.id)}
-            data-testid='restart-button'
-            className='px-8 py-4 text-xl font-bold text-white bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-blue-400 dark:border-blue-700 flex items-center gap-3'
-          >
-            <RefreshSVG className='h-7 w-7' />
-            Restart
-          </button>
-        </div>
-      )}
+      <div className='fixed top-4 left-1/2 -translate-x-1/2 z-50 flex gap-4'>
+        <button
+          onClick={() => finishGame(game.id)}
+          data-testid='reveal-button'
+          className='px-8 py-4 text-xl font-bold text-white bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-green-400 dark:border-green-700 flex items-center gap-3'
+        >
+          <EyeSVG className='h-7 w-7' />
+          Reveal
+        </button>
+        <button
+          onClick={() => resetGame(game.id)}
+          data-testid='restart-button'
+          className='px-8 py-4 text-xl font-bold text-white bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 border border-blue-400 dark:border-blue-700 flex items-center gap-3'
+        >
+          <RefreshSVG className='h-7 w-7' />
+          Restart
+        </button>
+      </div>
 
       {/* Auto Reveal - Top Right */}
       {isMod && (
