@@ -1,4 +1,3 @@
-import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
 import { Suspense } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { Loading } from './components/Loading/Loading';
@@ -8,7 +7,6 @@ import { GamePage } from './pages/GamePage/GamePage';
 import HomePage from './pages/HomePage/HomePage';
 import JoinPage from './pages/JoinPage/JoinPage';
 
-polyfillCountryFlagEmojis();
 
 function App() {
   return (
