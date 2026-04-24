@@ -28,13 +28,13 @@ export const CardPicker: React.FC<CardPickerProps> = ({ game, players, currentPl
   const cards = game.cards?.length ? game.cards : getCards(game.gameType);
 
   return (
-    <div className='w-full max-w-full animate-fade-in-down'>
-      <div className='text-center text-lg font-semibold my-4'>
+    <div className='fixed bottom-0 left-0 right-0 w-full bg-white dark:bg-gray-900 border-t-2 border-gray-300 dark:border-gray-700 shadow-2xl z-30 animate-fade-in-down'>
+      <div className='text-center text-lg font-semibold py-3'>
         {game.gameStatus !== Status.Finished
           ? 'Click on the card to vote'
           : 'Session not ready for Voting! Wait for moderator to start'}
       </div>
-      <div className='flex flex-wrap justify-center gap-6 py-4 '>
+      <div className='flex flex-wrap justify-center gap-6 py-4 px-2 overflow-x-auto'>
         {cards.map((card: CardConfig, index) => {
           const isSelected = players.find((p) => p.id === currentPlayerId)?.value === card.value;
           return (
