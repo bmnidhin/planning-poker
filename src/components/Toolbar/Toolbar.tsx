@@ -12,7 +12,7 @@ import { MenuSVG } from '../SVGs/Menu';
 import { PlusSVG } from '../SVGs/Plus';
 import { ThemeControl } from '../ThemeControl/ThemeControl';
 import { MenuItem } from './MenuItem';
-export const title = 'Planning Poker';
+export const title = 'Neptune Poker';
 
 export const Toolbar = () => {
   const history = useHistory();
@@ -47,11 +47,6 @@ export const Toolbar = () => {
 
   const menuItems = [
     {
-      icon: <GuideSVG />,
-      label: t('toolbar.menu.guide'),
-      onClick: () => handleNavigation('/guide'),
-    },
-    {
       icon: <PlusSVG />,
       label: t('toolbar.menu.newSession'),
       onClick: () => handleNavigation('/'),
@@ -66,7 +61,7 @@ export const Toolbar = () => {
     {
       icon: <GithubSVG />,
       label: 'GitHub',
-      onClick: () => (window.location.href = 'https://github.com/hellomuthu23/planning-poker'),
+      onClick: () => (window.location.href = 'https://github.com/bmnidhin/planning-poker'),
     },
   ];
   return (

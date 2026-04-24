@@ -1,7 +1,7 @@
 {
   "toolbar": {
     "menu": {
-      "about": "Wat is planning poker?",
+      "about": "Wat is Neptune Poker?",
       "guide": "Gids",
       "examples": "Voorbeelden",
       "newSession": "Nieuwe sessie",
@@ -10,8 +10,8 @@
   },
   "HomePage": {
     "heroSection": {
-      "title": "Gratis Planning Poker App",
-      "description": "Gratis / Open source Planning Poker webapp om user stories te schatten voor je Agile/Scrum teams. Maak een sessie aan en nodig je teamleden uit om efficiënt user stories te schatten."
+      "title": "Gratis Neptune Poker App",
+      "description": "Gratis / Open source Neptune Poker webapp om user stories te schatten voor je Agile/Scrum teams. Maak een sessie aan en nodig je teamleden uit om efficiënt user stories te schatten."
     }
   },
   "GameController": {

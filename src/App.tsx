@@ -5,7 +5,6 @@ import { Loading } from './components/Loading/Loading';
 import { Toolbar } from './components/Toolbar/Toolbar';
 import DeleteOldGames from './pages/DeleteOldGames/DeleteOldGames';
 import { GamePage } from './pages/GamePage/GamePage';
-import { GuidePage } from './pages/GuidePage/GuidePage';
 import HomePage from './pages/HomePage/HomePage';
 import JoinPage from './pages/JoinPage/JoinPage';
 
@@ -27,7 +26,6 @@ function App() {
             <Route path='/game/:id' component={GamePage} />
             <Route path='/delete-old-games' component={DeleteOldGames} />
             <Route path='/join/:id' component={JoinPage} />
-            <Route path='/guide' component={GuidePage} />
             <Route exact path='/*' component={HomePage} />
           </Switch>
         </Router>

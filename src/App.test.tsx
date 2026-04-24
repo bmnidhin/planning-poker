@@ -13,6 +13,6 @@ jest.mock('country-flag-emoji-polyfill', () => ({
 describe('App', () =>
   it('Should display toolbar with header', () => {
     render(<App />);
-    const toolBarHeader = screen.getByText('Planning Poker');
+    const toolBarHeader = screen.getByText('Neptune Poker');
     expect(toolBarHeader).toBeInTheDocument();
   }));

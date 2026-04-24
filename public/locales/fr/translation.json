@@ -1,7 +1,7 @@
 {
   "toolbar": {
     "menu": {
-      "about": "Qu'est-ce que le planning poker ?",
+      "about": "Qu'est-ce que le Neptune Poker ?",
       "guide": "Guide",
       "examples": "Exemples",
       "newSession": "Nouvelle session",
@@ -10,8 +10,8 @@
   },
   "HomePage": {
     "heroSection": {
-      "title": "Application Planning Poker gratuite",
-      "description": "Application Web Planning Poker gratuite/open source pour estimer les user stories de vos équipes Agile/Scrum. Créez une session et invitez vos coéquipiers à estimer les user stories efficacement."
+      "title": "Application Neptune Poker gratuite",
+      "description": "Application Web Neptune Poker gratuite/open source pour estimer les user stories de vos équipes Agile/Scrum. Créez une session et invitez vos coéquipiers à estimer les user stories efficacement."
     }
   },
   "GameController": {

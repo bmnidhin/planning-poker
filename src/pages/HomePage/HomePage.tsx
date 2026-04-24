@@ -1,9 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useRouteMatch } from 'react-router-dom';
 import { Divider } from '../../components/Divider/Divider';
-import { Footer } from '../../components/Footer/Footer';
-import { GoogleAd } from '../../components/GoogleAd/GoogleAd';
 import { CreateGame } from '../../components/Poker/CreateGame/CreateGame';
 import { JoinGame } from '../../components/Poker/JoinGame/JoinGame';
 import { RecentGames } from '../../components/Poker/RecentGames/RecentGames';
@@ -15,14 +12,11 @@ export const HomePage = () => {
     <>
       <div className='flex flex-col items-center w-full animate-fade-in-down'>
         <HeroSection />
-        <GoogleAd />
         <Divider />
         <RecentGamesSection />
         <Divider />
         <UIDesignSection />
-        <GoogleAd />
       </div>
-      <Footer />
     </>
   );
 };
@@ -59,20 +53,6 @@ const HeroSection = () => {
   const { t } = useTranslation();
   return (
     <Section className='pt-8'>
-      <Column className='flex flex-col items-center'>
-        <h1 className='text-2xl font-semibold text-center mb-4'>
-          {t('HomePage.heroSection.title')}
-        </h1>
-        <div className='p-4'>
-          <LazyLoadImage
-            loading='lazy'
-            alt={t('HomePage.heroSection.title')}
-            className='w-[500px] h-auto rounded-lg shadow-md'
-            src={LandingImage}
-          />
-        </div>
-        <p className='text-base text-center mb-4'>{t('HomePage.heroSection.description')}</p>
-      </Column>
       <Column className='flex flex-col items-center'>
         <div className='w-full max-w-md'>{isJoin ? <JoinGame /> : <CreateGame />}</div>
       </Column>
