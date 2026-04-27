@@ -105,8 +105,8 @@ podman machine start
 ## Deploy to Firebase Hosting - with GitHub Actions
 
 1. Make sure unit tests are passing
-1. Make sure secrets listed in `.github/workflows/deploy-to-firebase-on-master.yml` are added to [Github Action's secrets](https://github.com/bmnidhin/planning-poker/settings/secrets/actions)
-1. Add a commit against `master`
+1. Make sure secrets listed in `.github/workflows/firebase-hosting-merge.yml` are added to [Github Action's secrets](https://github.com/bmnidhin/planning-poker/settings/secrets/actions)
+1. Add a commit against `main`
 
 ## Development Guidelines
 
