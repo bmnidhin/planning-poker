@@ -48,6 +48,7 @@ Free / Open source Scrum/Agile Neptune Poker Web App to estimate user stories fo
 
 Pre-req
 
+- Register the [firebase project](https://firebase.google.com/docs/web/setup) and enable firestore and hosting
 - Node.js version 16.0 or higher.
 - Yarn
 - Java JDK version 11 or higher.(for firestore db emulator)
@@ -55,25 +56,25 @@ Pre-req
 1. Clone the repo
 
    ```bash
-   git clone https://github.com/hellomuthu23/planning-poker.git
+   git clone https://github.com/bmnidhin/planning-poker
    ```
 
-2. Run `yarn` command to install the required npm package.
-3. Install the Firebase CLI
+1. Run `yarn` command to install the required npm package.
+1. Install the Firebase CLI
 
    ```bash
    npm install -g firebase-tools
    ```
 
-4. Start the firebase db emulator
+1. Start the firebase db emulator (optional)
 
    ```bash
    npm run start:emulator
    ```
-
-5. Copy `.env.example` file as `.env` file and make sure `REACT_APP_USE_FIRESTORE_EMULATOR` is set to `true`
-6. Run `yarn start` to start the app.
-7. Access the app at `http://localhost:3000`.
+1. Copy `.env.example` file as `.env`
+1. Map contents of [Firebase config object](https://firebase.google.com/docs/web/learn-more#config-object) to `.env`
+1. Run `yarn start` to start the app.
+1. Access the app at `http://localhost:3000`.
 
 ## Creating container with Podman
 
@@ -85,7 +86,7 @@ pre-req
 podman machine start
 ```
 
-1. Build the app using below command. Make sure `REACT_APP_USE_FIRESTORE_EMULATOR` env variable is set to true.
+1. Build the app using below command.
 
    ```bash
    npm run build
@@ -106,6 +107,26 @@ podman machine start
 4. Wait for both emulator and app to start
 5. Access the app from local container using <http://localhost:3000>
 
+## Deploying to Firebase Hosting - from local
+
+1. Follow steps of the section - How to run the app locally for development
+1. Build the app using below command.
+
+   ```bash
+   npm run build
+   ```
+1. To deploy to your site, run the following command from the root of your local project directory:
+
+   ```bash
+   firebase deploy
+   ```
+
+## Deploy to Firebase Hosting - with GitHub Actions
+
+1. Make sure unit tests are passing
+1. Make sure secrets listed in `.github/workflows/deploy-to-firebase-on-master.yml` are added to [Github Action's secrets](https://github.com/bmnidhin/planning-poker/settings/secrets/actions)
+1. Add a commit against `master`
+
 ## Development Guidelines
 
 1. Keep it simple as much as possible
@@ -116,15 +137,3 @@ podman machine start
 6. Use tailwind utility classes for styling the components
 7. Don't duplicate code and use service folder to keep non-component/shared codes
 
-## Pending features open to development
-
-1. Export options
-2. Preserve history of voting and show it in session
-3. Ask AI Option
-
-## Tech Debts
-
-1. Add Semantic Release to generate changelog and release notes
-2. Add missing unit tests for services
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/hellomuthu23)

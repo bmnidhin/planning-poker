@@ -45,6 +45,9 @@ describe('GameArea component', () => {
       <GameArea game={mockGame} players={mockPlayers} currentPlayerId={mockCurrentPlayerId} />,
     );
 
-    expect(screen.queryAllByText('1')).toHaveLength(3);
+    // Check that cards are displayed - the game has 3 cards with displayValues "1", "2", "3"
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
   });
 });

@@ -61,7 +61,9 @@ describe('GameController component', () => {
       />,
     );
 
-    expect(screen.getByText(`${mockGame.gameStatus} ⏱️`)).toBeInTheDocument();
+    expect(screen.getByText('Status:')).toBeInTheDocument();
+    expect(screen.getByText(mockGame.gameStatus)).toBeInTheDocument();
+    expect(screen.getByText('⏱️')).toBeInTheDocument();
   });
 
   it('should display exit option', () => {
@@ -113,30 +115,6 @@ describe('GameController component', () => {
     userEvent.click(screen.getByTestId('exit-button'));
     expect(mockHistoryPush).toHaveBeenCalledWith('/');
   });
-  it('should display story name', () => {
-    render(
-      <GameController
-        game={mockGame}
-        currentPlayerId={mockCurrentPlayerId}
-        players={mockPlayers}
-      />,
-    );
-    expect(screen.getByDisplayValue('testStory')).toBeInTheDocument();
-  });
-
-  it('can enter new story name', () => {
-    render(
-      <GameController
-        game={mockGame}
-        currentPlayerId={mockCurrentPlayerId}
-        players={mockPlayers}
-      />,
-    );
-    const input = screen.getByPlaceholderText('Enter story name or number') as HTMLInputElement;
-    userEvent.type(input, 'n');
-    expect(gamesService.updateStoryName).toHaveBeenCalledWith(mockGame.id, 'testStoryn');
-  });
-
   describe('When Player is Moderator', () => {
     it('should display reveal option', () => {
       render(

@@ -1,5 +1,21 @@
 /* eslint-disable testing-library/no-node-access */
 /* eslint-disable testing-library/no-container */
+
+// Mock window.matchMedia BEFORE any imports
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as playersService from '../../../service/players';
@@ -147,8 +163,8 @@ describe('CardPicker component', () => {
 
   it('should not update player value when player clicks on a card and game is finished', () => {
     const currentPlayerId = mockPlayers[0].id;
-    jest.resetAllMocks();
     const updatePlayerValueSpy = jest.spyOn(playersService, 'updatePlayerValue');
+    updatePlayerValueSpy.mockClear(); // Clear any previous calls
     const finishedGameMock = {
       ...mockGame,
       gameStatus: Status.Finished,

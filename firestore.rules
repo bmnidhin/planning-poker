@@ -2,18 +2,61 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // This rule allows anyone with your Firestore database reference to view, edit,
-    // and delete all data in your Firestore database. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Firestore database will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you Update
-    // your rules
-    match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2026, 5, 24);
+    
+    // Helper function to check if a player exists in the game
+    function isPlayerInGame(gameId, playerId) {
+      return exists(/databases/$(database)/documents/games/$(gameId)/players/$(playerId));
+    }
+    
+    // Helper function to check if user is the game creator
+    function isGameCreator(gameId, playerId) {
+      return get(/databases/$(database)/documents/games/$(gameId)).data.createdById == playerId;
+    }
+    
+    // Helper function to check if members can manage the session
+    function canMembersManageSession(gameId) {
+      let game = get(/databases/$(database)/documents/games/$(gameId)).data;
+      return game.isAllowMembersToManageSession == true;
+    }
+    
+    // Games collection rules
+    match /games/{gameId} {
+      
+      // Anyone can read a game if they know the game ID
+      allow read: if true;
+      
+      // Anyone can create a new game
+      allow create: if request.resource.data.keys().hasAll(['id', 'name', 'createdBy', 'createdById', 'createdAt'])
+                    && request.resource.data.id == gameId
+                    && request.resource.data.createdAt is timestamp;
+      
+      // Only game creator or members (if allowed) can update the game
+      allow update: if isPlayerInGame(gameId, request.resource.data.createdById)
+                    && (isGameCreator(gameId, request.resource.data.createdById) 
+                        || canMembersManageSession(gameId));
+      
+      // Only game creator can delete the game
+      // OR allow deletion of games older than 6 months (for cleanup operations)
+      allow delete: if isGameCreator(gameId, resource.data.createdById)
+                    || resource.data.createdAt < timestamp.date(2026, 4, 27) - duration.value(180, 'd');
+      
+      // Players subcollection rules
+      match /players/{playerId} {
+        
+        // Anyone can read players in a game
+        allow read: if true;
+        
+        // Anyone can add themselves as a player to a game
+        allow create: if request.resource.data.id == playerId
+                      && request.resource.data.keys().hasAll(['id', 'name', 'status']);
+        
+        // Only the player themselves can update their own data
+        allow update: if playerId == request.resource.data.id;
+        
+        // Only the player themselves or game creator can remove a player
+        allow delete: if playerId == resource.data.id
+                      || isGameCreator(gameId, resource.data.id);
+      }
     }
   }
 }
