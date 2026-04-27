@@ -37,7 +37,7 @@ Pre-req
 1. Clone the repo
 
    ```bash
-   git clone https://github.com/bmnidhin/planning-poker
+   git clone https://github.com/bmnidhin/neptune-poker
    ```
 
 1. Run `yarn` command to install the required npm package.
@@ -105,7 +105,7 @@ podman machine start
 ## Deploy to Firebase Hosting - with GitHub Actions
 
 1. Make sure unit tests are passing
-1. Make sure secrets listed in `.github/workflows/firebase-hosting-merge.yml` are added to [Github Action's secrets](https://github.com/bmnidhin/planning-poker/settings/secrets/actions)
+1. Make sure secrets listed in `.github/workflows/firebase-hosting-merge.yml` are added to [Github Action's secrets](https://github.com/bmnidhin/neptune-poker/settings/secrets/actions)
 1. Add a commit against `main`
 
 ## Development Guidelines

@@ -57,7 +57,7 @@ export const Toolbar = () => {
     {
       icon: <GithubSVG />,
       label: 'GitHub',
-      onClick: () => (window.location.href = 'https://github.com/bmnidhin/planning-poker'),
+      onClick: () => (window.location.href = 'https://github.com/bmnidhin/neptune-poker'),
     },
   ];
   return (
